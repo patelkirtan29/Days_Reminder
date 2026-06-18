@@ -55,10 +55,12 @@ class DaysWallpaperService : WallpaperService() {
                 ).toInt().coerceIn(0, total)
                 val left = total - passed
 
-                val top = canvas.height * 0.18f
+                 val top = canvas.height * 0.18f
                 canvas.drawText(t.name, 60f, top, titlePaint)
-                canvas.drawText("$left days left  •  $passed of $total",
+                canvas.drawText("$passed / $total",
                     60f, top + titlePaint.textSize * 1.3f, subPaint)
+                canvas.drawText("$left days left",
+                    60f, top + titlePaint.textSize * 2.2f, subPaint)
 
                 val cols = 14
                 val margin = 60f
@@ -83,10 +85,7 @@ class DaysWallpaperService : WallpaperService() {
                 }
 
                 // honor manual overrides saved in the app too
-                fun isFilled(i: Int): Boolean {
-                    t.overrides[i]?.let { return it }
-                    return i < passed
-                }
+                fun isFilled(i: Int): Boolean = i < passed
 
                 for (i in 0 until total) {
                     val r = i / cols

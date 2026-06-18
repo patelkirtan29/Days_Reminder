@@ -3,6 +3,7 @@
         android:label="DaysLeft"
         android:allowBackup="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -12,5 +13,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".TrackerActivity" android:exported="false"/>
+
+        <service
+            android:name=".DaysWallpaperService"
+            android:permission="android.permission.BIND_WALLPAPER"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/wallpaper"/>
+        </service>
     </application>
 </manifest>

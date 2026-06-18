@@ -105,6 +105,7 @@ class MainActivity : AppCompatActivity() {
                             renderList()
                         }
                     }.show()
+                true
             }
             container.addView(card)
         }
